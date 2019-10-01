@@ -23,8 +23,7 @@ function convertVttToJson(vttString) {
     } else if (line.replace(/<\/?[^>]+(>|$)/g, "") === " "){
     } else {
       if (start){
-        if (sections.
-            !== 0) {
+        if (sections.length !== 0) {
           if (sections[sections.length - 1].part.replace(/<\/?[^>]+(>|$)/g, "") === line.replace(/<\/?[^>]+(>|$)/g, "")) {
           } else {
             if (current.part.length === 0) {
