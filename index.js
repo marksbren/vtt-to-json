@@ -23,7 +23,8 @@ function convertVttToJson(vttString) {
     } else if (line.replace(/<\/?[^>]+(>|$)/g, "") === " "){
     } else {
       if (start){
-        if (sections.length !== 0) {
+        if (sections.
+            !== 0) {
           if (sections[sections.length - 1].part.replace(/<\/?[^>]+(>|$)/g, "") === line.replace(/<\/?[^>]+(>|$)/g, "")) {
           } else {
             if (current.part.length === 0) {
@@ -66,11 +67,17 @@ function convertVttToJson(vttString) {
         if(key == "" || key == "##") {
           return;
         }
+        if(cleanWord(item.split("==")[0]).length === 0){
+           return;
+        }
         resultsArray.push({
           word: cleanWord(item.split("==")[0]),
           time: timeString2ms(item.split("==")[1]),
         })
       } else {
+        if(cleanWord(item).length === 0){
+           return;
+        }
         resultsArray.push({
           word: cleanWord(item),
           time: undefined,
@@ -95,7 +102,8 @@ function timeString2ms(a,b){// time(HH:MM:SS.mss) // optimized
 
 // removes everything but characters and apostrophe and dash
 function cleanWord(word) {
-  return word.replace(/[^0-9a-z'-]/gi, '')
+  var returnWord = word.replace(/[^0-9a-z'-]/gi, '')
+  return returnWord
 }
 
 function clone(obj) {
